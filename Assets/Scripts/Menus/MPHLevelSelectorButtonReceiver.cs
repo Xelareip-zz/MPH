@@ -20,6 +20,15 @@ public class MPHLevelSelectorButtonReceiver : MonoBehaviour
     void Start()
     {
         _instance = this;
+        MPHLevelSelectorButtonInitializer[] buttonsInitializers = FindObjectsOfType<MPHLevelSelectorButtonInitializer>();
+        foreach (MPHLevelSelectorButtonInitializer initializer in buttonsInitializers)
+        {
+            Text buttonText = initializer.GetComponentInChildren<Text>();
+            if (MPHPlayer.Instance._levelsUnlocked.Contains(buttonText.text) == false)
+            {
+                initializer.GetComponent<Button>().interactable = false;
+            }
+        }
     }
 
     public void LoadLevel(string levelId)

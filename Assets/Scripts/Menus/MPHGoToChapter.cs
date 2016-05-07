@@ -5,6 +5,11 @@ public class MPHGoToChapter : MonoBehaviour
 {
     public List<GameObject> _chapterObjects;
 
+    void Start()
+    {
+        GoToChapter(1);
+    }
+
     public void GoToChapter(int chapter)
     {
         if (chapter > 0 && chapter <= _chapterObjects.Count)

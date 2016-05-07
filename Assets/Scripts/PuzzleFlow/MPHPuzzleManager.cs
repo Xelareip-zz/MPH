@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class MPHPuzzleManager : MonoBehaviour
 {
@@ -75,6 +76,7 @@ public class MPHPuzzleManager : MonoBehaviour
 
     public void WinGame()
     {
+        MPHPlayer.Instance.ValidateLevel(SceneManager.GetActiveScene().name.Replace("Level", ""));
         _winGameObject.DoAction();
     }
 
