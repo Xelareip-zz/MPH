@@ -26,7 +26,6 @@ public class MPHInteractableManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             position = Input.mousePosition;
-            position = MPHUtils.ScreenToWorld(position);
         }
 #endif
         if (Input.touchCount == 1)
@@ -41,6 +40,7 @@ public class MPHInteractableManager : MonoBehaviour
         {
             return;
         }
+        position = MPHUtils.ScreenToWorld(position);
 
         foreach (MPHInteractableObject current in _registeredObjects)
         {

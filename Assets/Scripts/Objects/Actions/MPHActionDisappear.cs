@@ -5,11 +5,11 @@ public class MPHActionDisappear : MPHInteractableAction
 {
     public GameObject _fullObject;
     public GameObject _movingObject;
-    public bool _usable;
+    public bool _activable;
 
     public override void DoAction()
     {
-        if (_usable)
+        if (_activable || _fullObject.activeInHierarchy)
         {
             _fullObject.SetActive(!_fullObject.activeInHierarchy);
         }
@@ -19,7 +19,7 @@ public class MPHActionDisappear : MPHInteractableAction
     {
         if (coll.gameObject == _movingObject)
         {
-            _usable = false;
+            _activable = false;
         }
     }
 
@@ -27,7 +27,7 @@ public class MPHActionDisappear : MPHInteractableAction
     {
         if (coll.gameObject == _movingObject)
         {
-            _usable = true;
+            _activable = true;
         }
     }
 }

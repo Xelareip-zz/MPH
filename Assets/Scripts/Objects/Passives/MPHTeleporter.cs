@@ -7,11 +7,20 @@ public class MPHTeleporter : MonoBehaviour
     public MPHTeleporter _endPoint;
     public bool _isActive;
 
+    private Rigidbody2D GetBall()
+    {
+        if (_target == null)
+        {
+            _target = MPHBall.Instance.GetComponent<Rigidbody2D>();
+        }
+        return _target;
+    }
+
     void OnTriggerEnter2D(Collider2D coll)
     {
-        if (_isActive)
+        if (_isActive && coll.gameObject == GetBall().gameObject)
         {
-            _target.transform.position = _endPoint.transform.position;
+            GetBall().transform.position = _endPoint.transform.position;
             _endPoint._isActive = false;
         }
     }
