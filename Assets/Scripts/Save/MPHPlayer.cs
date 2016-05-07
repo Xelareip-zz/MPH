@@ -70,4 +70,13 @@ public class MPHPlayer
         writer.Write(saveString);
         writer.Close();
     }
+
+    public void ValidateLevel(string levelId)
+    {
+        if (_levelsDone.Contains(levelId) == false)
+        {
+            _levelsDone.Add(levelId);
+            Save();
+        }
+    }
 }
