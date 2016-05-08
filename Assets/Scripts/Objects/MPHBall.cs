@@ -22,6 +22,7 @@ public class MPHBall : MonoBehaviour
     public float _speedTrigger;
     public Sprite _stoppedSprite;
     public Sprite _normalSprite;
+    public float _lastChange;
     
 	void Start ()
     {
@@ -32,6 +33,15 @@ public class MPHBall : MonoBehaviour
 
     void Update()
     {
+        if (Time.time - _lastChange > 0.5f)
+        {
+            _lastChange = Time.time;
+        }
+        else
+        {
+            return;
+        }
+        
         if (_rigidbody.velocity.magnitude < _speedTrigger && Mathf.Abs(_rigidbody.angularVelocity) < _angularSpeedTrigger)
         {
             _renderer.sprite = _stoppedSprite;
