@@ -5,6 +5,7 @@ public class MPHInteractableObject : MonoBehaviour
 {
     public MPHInteractableAction _action;
     public List<Collider2D> _colliders;
+    public event System.Action _touched;
 
     void Start()
     {
@@ -17,6 +18,10 @@ public class MPHInteractableObject : MonoBehaviour
 
     public void Touched()
     {
+        if (_touched != null)
+        {
+            _touched();
+        }
         _action.DoAction();
     }
 }
